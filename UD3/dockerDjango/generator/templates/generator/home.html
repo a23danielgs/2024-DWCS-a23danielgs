@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>First example with templates</title>
+    <style>
+      h1 {
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        color: rgb(2, 72, 163);
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+        margin-left: 2%;
+      }
+      p {
+        margin-left: 2%;
+      }
+      select {
+        margin-bottom: 10%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>❂ Password Generator ❂</h1>
+    <p>The password is ➫ <strong>{{ password }}</strong></p>
+
+    <form action="{% url 'password' %}">
+      <select name="length">
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+      </select>
+      <input type="submit" value="Generate Password" />
+    </form>
+  </body>
+</html>
