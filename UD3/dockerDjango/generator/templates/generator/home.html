@@ -14,12 +14,21 @@
         flex-direction: column;
         width: fit-content;
         margin-left: 2%;
+        align-items: flex-start;
       }
       p {
         margin-left: 2%;
       }
+      #ultimo {
+        margin-bottom: 30%;
+      }
       select {
-        margin-bottom: 10%;
+        width: 133.8px;
+        margin-bottom: 5%;
+      }
+      div {
+        display: flex;
+        flex-direction: row;
       }
     </style>
   </head>
@@ -32,8 +41,21 @@
         <option value="6">6</option>
         <option value="7">7</option>
         <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12" selected="selected">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
       </select>
+
+      <div><input name="uppercase" type="checkbox" />Uppercase</div>
+      <div><input name="numbers" type="checkbox" />Numbers</div>
+      <div>
+        <input name="special" type="checkbox" id="ultimo" />Special Characters
+      </div>
       <input type="submit" value="Generate Password" />
     </form>
+    <a href="{% url 'about' %}">about</a>
   </body>
 </html>
