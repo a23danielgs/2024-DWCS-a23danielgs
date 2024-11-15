@@ -11,16 +11,10 @@
   </head>
   <body>
     <div class="container mt-3">
-      <h1>BLOG</h1>
-      {% for blog in blogs %}
-      <ul class="w-25 list-group">
-        <li class="list-group-item bg-secondary text-white">
-          {{ blog.title }}
-        </li>
-        <li class="list-group-item">{{ blog.data }}</li>
-        <li class="list-group-item mb-3">{{ blog.description }}</li>
-      </ul>
-      {% endfor %}
+      <h1>ALO</h1>
+      <p>{{ blog.title }}</p>
+      <p>{{ blog.description }}</p>
+      <p>{{ blog.data }}</p>
     </div>
   </body>
 </html>
