@@ -1,0 +1,32 @@
+{% extends 'portfolio/base.html' %} {% block content %} {% load static %}
+
+<!-- Mi código -->
+<div class="container">
+  <h1><strong> WELCOME TO DGS PORTFOLIO</strong></h1>
+  <br /><a href="{% url 'blog:all_blogs' %}">Blogs</a> <br /><a
+    href="{% static 'portfolio/horario curso.pdf' %}"
+    >Ficheiro</a
+  >
+  <br />
+  <img width="400" src="{% static 'portfolio/gato.webp' %}" />
+  <br />
+  <br />
+  <br />
+  <div>
+    {% for project in projects %}
+    <p>{{ project.title }}</p>
+    <p>{{ project.description }}</p>
+    <p>
+      <img
+        src="{{ project.image.url }}"
+        alt="un gato con pintas de bobo"
+        width="444px"
+      />
+    </p>
+    {% if project.url %}
+    <p><a href="{{ project.url }}">Link</a></p>
+    <br />
+    {% endif %} {% endfor %}
+  </div>
+</div>
+{% endblock %}
