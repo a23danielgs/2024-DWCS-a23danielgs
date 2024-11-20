@@ -21,10 +21,10 @@
 
 <body>
 
-  <nav id="topNav" class="navbar navbar-expand-md navbar-light">
+  <nav style="background-color: rgb(214, 255, 198);" id="topNav" class="navbar navbar-expand-md navbar-light">
     <div class="container">
-      <a class="navbar-brand" href="{% url 'home' %}">
-        <img src="{% static "portfolio/LogoXD.png" %}" width="60" height="60" class="d-inline-block align-top" alt="Nick's Logo">
+      <a style="display: flex;align-items: center;" class="navbar-brand" href="{% url 'home' %}">
+        <img src="{% static "portfolio/LogoG.png" %}" width="60" height="60" class="d-inline-block align-top" alt="Nick's Logo">
         <span>Daniel Gómez</span>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,16 +33,10 @@
       <div class="collapse navbar-collapse text-center" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="{% static "portfolio/horario curso.pdf" %}">Resume</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://www.linkedin.com/in/nick-walter/" target="_blank">LinkedIn</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://twitter.com/ZappyCode" target="_blank">Twitter</a>
+            <a class="nav-link" href="{% static "portfolio/horario curso.pdf" %}">schedule</a>
           </li>
           <li>
-            <a role="button" href="{% url 'blog:all_blogs' %}" class="btn btn-primary">Blog</a>
+            <a role="button" href="{% url 'blog:all_blogs' %}" class="btn btn-success">Blog</a>
           </li>
         </ul>
       </div>
