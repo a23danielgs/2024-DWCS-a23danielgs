@@ -1,6 +1,6 @@
 from django.db import models
 
-class Character(models.Model):                                
+class Character(models.Model):                               
     image = models.ImageField(upload_to='Characters/images/')
     alternateImage = models.ImageField(upload_to='Characters/images/',blank=True)
     universe = models.CharField(max_length=100)  

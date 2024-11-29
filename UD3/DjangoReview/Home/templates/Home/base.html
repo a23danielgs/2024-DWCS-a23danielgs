@@ -19,50 +19,88 @@
         padding-right: 35%;
         padding-top: 2%;
       }
+      #universes {
+        text-decoration: none;
+      }
     </style>
   </head>
   <body>
-    <!--NAVBAR-->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'home' %}"
-          >🌐 Character database</a
-        >
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Explore Universes</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'characters:all_characters' %}"
-                >All Characters</a
-              >
-            </li>
-          </ul>
-          <form class="d-flex" role="search">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-light" type="submit">Search</button>
-          </form>
+    <div class="wrapper d-flex flex-column min-vh-100">
+      <!--NAVBAR-->
+      <nav
+        class="navbar navbar-expand-lg bg-body-tertiary"
+        data-bs-theme="dark"
+      >
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'home' %}"
+            >🌐 Character database</a
+          >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'characters:all_universes' %}"
+                  >Explore Universes</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="{% url 'characters:all_characters' 1 %}"
+                  >All Characters</a
+                >
+              </li>
+            </ul>
+            <form
+              class="d-flex"
+              action="{% url 'characters:search' %}"
+              role="search"
+            >
+              <input
+                class="form-control me-2"
+                type="text"
+                name="q"
+                placeholder="Search"
+                aria-label="Search"
+                value="{{ query }}"
+              />
+              <button class="btn btn-outline-light" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
-    </nav>
-    <!--NAVBAR-->
-    <div class="container">{% block content %}{% endblock %}</div>
+      </nav>
+      <!--NAVBAR-->
+      <div class="container">{% block content %}{% endblock %}</div>
+
+      <footer class="bg-dark text-center text-white" style="margin-top: auto">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0"></div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div
+          class="text-center p-3"
+          style="background-color: rgba(0, 0, 0, 0.2)"
+        >
+          © 2020 Copyright:
+          <a class="text-white" href="https://mdbootstrap.com/"
+            >MDBootstrap.com</a
+          >
+        </div>
+        <!-- Copyright -->
+      </footer>
+    </div>
   </body>
 </html>

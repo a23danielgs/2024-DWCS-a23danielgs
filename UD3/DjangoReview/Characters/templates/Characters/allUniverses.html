@@ -1,0 +1,14 @@
+{% extends "Home/base.html" %} {% load static %} {% block content %}
+<h1 id="UNIVERSES" class="font-weight-bold text-center">UNIVERSES</h1>
+
+{% for universe in universes %}
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">
+    <a id="universes" href="{% url 'characters:universe_detail' universe %}">
+      <h3>🌌 {{ universe }}</h3>
+    </a>
+  </li>
+
+  {% endfor %}
+</ul>
+{% endblock %}

@@ -12,15 +12,29 @@
 
   <p class="mt-5">RANDOM CHARACTERS:</p>
   <hr />
-  <div class="card" style="width: 18rem">
-    <img src="..." class="card-img-top" alt="..." />
-    <div class="card-body">
-      <p class="card-text">
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
-      </p>
-    </div>
-  </div>
+  <div
+    class="row"
+    style="display: flex; justify-content: space-around; margin-bottom: 50px"
+  >
+    {% for character in characters %}
 
-  {% endblock %}
+    <div class="card" style="width: 18rem">
+      <a href="{% url 'characters:detail' character.id %}">
+        <img
+          src="{{ character.image.url }}"
+          style="height: 300px; object-fit: contain"
+          class="card-img-top"
+          alt="character"
+      /></a>
+
+      <div class="card-body">
+        <p class="card-text">
+          {{ character.universe }} / <strong>{{ character.name }}</strong>
+        </p>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
 </div>
+{% endblock %}

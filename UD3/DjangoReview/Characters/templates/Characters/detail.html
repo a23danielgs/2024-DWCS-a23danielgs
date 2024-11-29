@@ -6,7 +6,11 @@
 
 <div id="div">{{ blog.description|safe }}</div> -->
 <h1 class="text-center mt-5" id="blogdetailtitle" style="margin-bottom: 5%">
-  <u><strong>{{ character.universe }}</strong></u>
+  <strong
+    ><a href="{% url 'characters:universe_detail' character.universe %}"
+      >{{ character.universe }}</a
+    ></strong
+  >
 </h1>
 <div style="display: flex; flex-direction: row; justify-content: space-around">
   <img src="{{ character.image.url }}" height="400px" />
@@ -14,7 +18,11 @@
   <img src="{{ character.alternateImage.url }}" height="400px" />
   {% else %} {% endif %}
 </div>
-<h3 class="mt-5" id="blogdetailtitle">{{ character.name }}</h3>
+<h3 class="mt-5" id="blogdetailtitle">
+  <u><strong>{{ character.name }}</strong></u>
+</h3>
 <hr />
-<p class="mt-5" id="blogdetailtitle">{{ character.description }}</p>
+<p class="mt-5" id="blogdetailtitle" style="margin-bottom: 200px">
+  {{ character.description }}
+</p>
 {% endblock %}

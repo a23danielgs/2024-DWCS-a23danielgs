@@ -1,0 +1,32 @@
+{% extends "Home/base.html" %} {% load static %} {% block content %}
+<div></div>
+{% if charactersN or charactersD %}
+<h1 id="CHARACTERS" class="font-weight-bold text-center">
+  You searched for : "{{ query }}"
+</h1>
+
+{% for character in charactersN %}
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">
+    <a href="{% url 'characters:detail' character.id %}">
+      <h3>{{ character.universe }} / {{ character.name }}</h3>
+    </a>
+    <p class="text-muted">{{ character.date|date:'M d Y'|upper }}</p>
+  </li>
+  <!--   cars.remove("Volvo") -->
+  {% endfor %} {% for character in charactersD %}
+  <div></div>
+  {% if character in charactersN %} {% else %}
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <a href="{% url 'characters:detail' character.id %}">
+        <h3>{{ character.universe }} / {{ character.name }}</h3>
+      </a>
+      <p class="text-muted">{{ character.date|date:'M d Y'|upper }}</p>
+    </li>
+    {% endif %} {% endfor %} {% else %}
+    <h4>No se encontraron personajes por la búsqueda de : "{{ query }}"</h4>
+    {% endif %}
+  </ul>
+</ul>
+{% endblock%}
