@@ -1,30 +1,9 @@
-""" 
-1   Create a Book class to represent a book in the library.
-    Each book should have:
-        A title (str).
-        An author (str).
-        A status (bool) indicating whether the book is available.
 
-2   Create a Library class that manages the collection of books.
-    It should:
-        Have a list of books.
-        Provide methods to:
-            List available books.
-            Borrow a book (by title).
-            Return a book (by title).
-
-3   Handle the following exceptions:
-    Raise a BookNotAvailableException if a user tries to borrow a book that is already borrowed.
-    Raise a BookNotFoundException if a user tries to borrow or return a book that does not exist in the library.
-
-4   Write functions to:
-    Add books to the library.
-    Simulate a user borrowing and returning books. 
-"""
+""" Exceptions """
 class BookNotAvailableException(Exception):
     def __init__(self, message):
         self.message = message
-    
+            
     def __str__(self):
         return f"{self.message}"
     
@@ -34,10 +13,11 @@ class BookNotFoundException(Exception):
     
     def __str__(self):
         return f"{self.message}"
-    
+
+""" Clase Book """
 class Book:
     def __init__(self,title,author,status = True):
-        self.title = title
+        self.title = title  
         self.author = author
         self.status = status
 
@@ -51,8 +31,9 @@ class Book:
         self.status = status
 
     def __str__(self):
-        return f"Title : {self.title}     Author : {self.author}     Status : {self.status}"
+        return f"Title : {self.title}       Author : {self.author}      Status : {self.status}"
 
+""" Clase Library """
 class Library:
     def __init__(self,books):
         self.books = books
@@ -61,6 +42,9 @@ class Library:
         for book in self.books:
             if(book.getStatus() == True):
                 print(str(book))
+
+    def addBook (self,book):
+        self.books.append(book)
 
     def borrowBook (self,ID):
         for book in self.books:
@@ -84,5 +68,51 @@ class Library:
     def __str__(self):
         ListBooks = ""
         for book in self.books:
-            ListBooks+="\n"+str(book)
-        return f"BOOKS:\n{ListBooks}"
+            ListBooks+="\n\t"+str(book)
+        return f"BOOKS:{ListBooks}"
+
+
+""" Código : """
+
+libros = [
+    Book("Cien años de soledad","Gabriel García Márquez"),
+    Book("1984","George Orwell"),
+    Book("El principito","Antoine de Saint-Exupéry"),
+    Book("Orgullo y prejuicio","Jane Austen"),
+    Book("Rayuela","Julio Cortázar")
+    ]
+
+library = Library(libros)
+
+library.addBook(Book("Don Quijote de la Mancha","Miguel de Cervantes"))
+
+try:
+    library.borrowBook("Rayuela")
+    library.borrowBook("Orgullo y prejuicio")
+    library.borrowBook("El principito")
+    library.borrowBook("Este libro no existe")
+except BookNotAvailableException  as e:
+    print(e)
+except BookNotFoundException as e:
+    print(e)
+
+
+try:
+    library.borrowBook("Rayuela")
+except BookNotAvailableException as e:
+    print(e)
+except BookNotFoundException as e:
+    print(e)
+
+library.printAvailable()
+
+try:
+    library.returnBook("Rayuela")
+    library.returnBook("Este libro no existe")
+except BookNotAvailableException as e:
+    print(e)
+except BookNotFoundException as e:
+    print(e)
+
+library.printAvailable()
+print(library)
