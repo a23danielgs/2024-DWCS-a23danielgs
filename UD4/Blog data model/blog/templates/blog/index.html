@@ -1,0 +1,9 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block title %}
+    Main page
+{% endblock %}
+{% block content %}
+    {% include "blog/includes/post.html" %}
+    <h3><a href="{% url 'blog:all_posts' %}">All posts</a></h3>
+{% endblock %}
