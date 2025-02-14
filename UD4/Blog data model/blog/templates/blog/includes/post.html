@@ -1,9 +1,15 @@
 {% load static %}
-<img alt="Logo de lamp posts" src="{% static 'blog/logo.jpg' %}" width="350px" height="250px">
-<h1>WELCOME TO LAMP POSTS  👋≧◉ᴥ◉≦</h1>
+<div class="header moogle-box">
+    <img alt="Logo de lamp posts" src="{% static 'blog/images/Logo.jpg' %}" width="300px" height="250px">
+    <img alt="Logo de lamp posts" src="{% static 'blog/images/Moogle.webp' %}" width="200px" height="250px">
+</div>
+<hr>
+<h1 >WELCOME TO LAMP POSTS  👋≧◉ᴥ◉≦</h1>
+<hr>
+<div class="lista">
 <ul>
     {% for post in posts %}
-        <li><a href="{% url 'blog:detail' post.slug %}">{{ post.date|date:'M d Y' }} / {{ post.image_name }} / {{ post.title }} / {{ post.excerpt }}</a></li>
+        <li class="sparkle-text"><a href="{% url 'blog:detail' post.slug %}">{{ post.date|date:'M d Y' }} / {{ post.title }} / {{ post.excerpt }}</a></li>
     {% endfor %}
 </ul>
-
+</div>

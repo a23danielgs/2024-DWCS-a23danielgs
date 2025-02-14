@@ -1,0 +1,12 @@
+
+{% extends "reviews/base.html" %}
+
+{% block title %}Your Student{% endblock %}
+
+{% block content %}
+  <form action="" method="POST">
+    {% csrf_token %}
+    {{ form }}  
+    <button type="submit">Save</button>
+  </form>
+{% endblock %}

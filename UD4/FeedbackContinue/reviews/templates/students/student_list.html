@@ -1,0 +1,17 @@
+{% extends "reviews/base.html" %}
+
+{% block title %}Thank you!{% endblock %}
+
+{% block content %}
+    <ul>
+        {% for student in students %}
+            <li>{{ student.name }}(Degree: {{ student.degree }})
+                <span>/</span>
+                <a href="{% url 'reviews:update' student.id %}">update student</a>
+                <span>/</span>
+                <a href="{% url 'reviews:delete' student.id %}">delete student</a>
+            </li>
+        {% endfor %}
+    </ul>
+        <a href="{% url 'reviews:create' %}">create student</a>
+{% endblock %}

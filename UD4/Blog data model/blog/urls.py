@@ -8,8 +8,9 @@ from . import views
 app_name = 'blog'
 
 urlpatterns = [
-    path('',views.index),
-    path('all_posts',views.all_posts,name="all_posts"),
-    path('<slug:slug>/',views.detail,name='detail')
+    path('',views.Index.as_view()),
+    path('all_posts',views.PostsList.as_view(),name="all_posts"),
+    path('<slug:slug>/',views.Detail.as_view(),name='detail'),
+    path('read-later',views.ReadLater.as_view(),name='read_later')
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

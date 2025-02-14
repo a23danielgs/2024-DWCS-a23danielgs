@@ -10,16 +10,8 @@
 </head>
 <body>
     <form action="/" method="POST">
-        {% csrf_token %}
-        <h1>Novell Services Login</h1>
-        {% for field in form %}
-        <div class="form-control {% if field.errors %} errors {% endif %}">        
-            {{ field.label_tag }}
-            {{ field }}
-            {{ field.errors }}
-        </div>
-        {% endfor %}
-        <button>Send</button>
+        {% include "reviews/includes/form.html" %}
+        <button>Submit</button>
     </form>
 </body>
 </html>

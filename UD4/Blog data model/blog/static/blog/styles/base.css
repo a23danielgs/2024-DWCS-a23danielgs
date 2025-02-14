@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap");
+
+body {
+  background-color: #f8e8d8;
+  color: #5a2d0c;
+  font-family: "MedievalSharp", cursive;
+  text-align: center;
+}
+
+h1 {
+  color: #8b0000;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  font-size: 2.5em;
+}
+
+a {
+  color: #d47f00;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  color: #ffcc00;
+  text-shadow: 0px 0px 5px rgba(255, 255, 204, 0.8);
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background: #fff3e0;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+img {
+  width: auto;
+  height: 400px;
+}
+
+.moogle-box {
+  background: white;
+  border: 12px inset #8b5400;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px auto;
+  display: inline-block;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes sparkle {
+  0% {
+    text-shadow: 0 0 5px #fff;
+  }
+  50% {
+    text-shadow: 0 0 10px #ffcc00;
+  }
+  100% {
+    text-shadow: 0 0 5px #fff;
+  }
+}
+
+.sparkle-text {
+  animation: sparkle 1.5s infinite alternate;
+}
+.header {
+  width: 95%;
+  background-color: white;
+}
+.lista {
+  display: flex;
+  justify-content: center;
+}
+ul {
+  width: 50%;
+}
+.content {
+  width: 80%;
+}
