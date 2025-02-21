@@ -1,19 +1,4 @@
-{% extends "blog/base.html" %}
-{% load static %}
-{% block title %}
-    Read Later
-{% endblock %}
-{% block content %}
-    <section id="read-later">
-        <h2>Read later</h2>
-        {% if not has_posts %}
-            <p>You didn´t save any posts</p>
-        {% else %}
-        <ul>
-            {% for  in  %}
-                <li></li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-    </section>
-{% endblock %}
+{% extends "blog/base.html" %} {% load static %} {% block title %} Stored Posts
+{% endblock %} {% block page_css %} {% endblock %} {% block content %} Stored
+posts {% if not has_posts %} you didn´t have posts {% endif %} {% for post in
+posts %} {% include "blog/includes/post.html" %} {% endfor %} {% endblock %}

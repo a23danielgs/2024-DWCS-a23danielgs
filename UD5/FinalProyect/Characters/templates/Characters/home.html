@@ -1,0 +1,51 @@
+{% extends "Characters/includes/base.html" %}
+{% load static %}
+{% block title %}
+    Main Page
+{% endblock %}
+{% block content %}
+<div id="cuerpo">    
+    <div id="home-banner">
+        <img width="200px" src="{% static 'img/Robotin.jpg' %}">
+        <div id="home-texto">
+            <h2 id="text"></h2>
+        </div>
+    </div>
+    <h2>RANDOM CHARACTERS:</h2>
+    <div id="separator"></div>
+    <div id="random-characters">
+        {% for character in Characters %}
+            <div class="card" style="width: 18rem">
+                <a href="">
+                <img
+                    src="{{ character.image.url }}"
+                    style="height: 300px; object-fit: contain"
+                    class="card-img-top"
+                    alt="character"
+                /></a>
+        
+                <div class="card-body">
+                <p class="card-text">
+                    {{ character.universe }} / <strong>{{ character.name }}</strong>
+                </p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<script>
+    const text = "Welcome to the database! I am Manolete, your digital guide in this vast galaxy of pop culture characters. Here, you can explore heroes, villains, magical creatures, and legends from your favorite franchises.";
+    let arr = text.split(' ')
+    let index = 0;
+
+    function typeWriter() {
+        if (index < arr.length) {
+            document.getElementById('text').textContent += arr[index]+' ';
+            index++;
+            setTimeout(typeWriter, 150);
+        }
+    }
+
+    typeWriter();
+</script>
+{% endblock %}

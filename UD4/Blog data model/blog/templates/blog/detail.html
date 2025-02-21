@@ -22,20 +22,12 @@
         {% endfor %}
         </ul>
     </div>
-    <div id="read-later">    
-        {% if post.id in read_later_posts %}
-        <p>Read Later ✅</p>
-        {% else %}
-        <form action="{% url 'blog:read_later' %}" method="POST">
+    <div id="read-later">
+        <form action="{% url 'blog:read-later'%}" method="POST">
             {% csrf_token %}
-            <input type="hidden" name="post_id" value="{{ post.id }}">
-            <input type="hidden" name="post_slug" value="{{ post.slug }}">
-            <button>Read Later</button>
+            <input type="hidden" value="{{ post.id }}"  name="post_id"></input>
+            <button>Read later</button>
         </form>
-        <p>{{ read_later_posts }}</p>
-        {% endif %}
-
-
     </div>
 
     

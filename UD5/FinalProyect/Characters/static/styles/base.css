@@ -1,0 +1,102 @@
+html,
+body {
+  height: fit-content;
+  min-height: 100%;
+  width: fit-content;
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Altura mínima del viewport */
+}
+
+.footer {
+  margin-top: auto; /* Empuja el footer hacia abajo */
+}
+
+#cuerpo {
+  height: fit-content;
+  min-height: 100%;
+  background-color: #d9d9d9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#home-banner {
+  margin-top: 2%;
+  margin-bottom: 5%;
+  width: 70%;
+  height: 500px;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+  min-height: 500px;
+}
+#home-texto {
+  padding: 30px;
+  display: flex;
+  height: 80%;
+  width: 80%;
+  background-color: #293035;
+  color: white;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+#separator {
+  height: 2px;
+  width: 70%;
+  background-color: #293035;
+  margin-top: 1%;
+  margin-bottom: 5%;
+}
+#random-characters {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  justify-content: space-around;
+  margin-bottom: 5%;
+}
+#universe_title {
+  margin-top: 2%;
+  display: flex;
+  flex-direction: row;
+  text-align: start;
+  min-width: 70%;
+}
+#listado-universos {
+  padding: 2%;
+  color: #d9d9d9;
+  margin-bottom: 5%;
+  width: fit-content;
+  min-width: 70%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  background-color: #293035;
+  min-height: 500px;
+}
+#separator2 {
+  height: 2px;
+  width: 40%;
+  background-color: #d9d9d9;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  margin-left: 30%;
+}
+#link_universo {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+a {
+  color: #d9d9d9;
+  text-decoration: none;
+}

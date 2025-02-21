@@ -1,0 +1,40 @@
+{% extends "Home/base.html" %} {% load static %} {% block content %}
+<div class="container">
+  <div id="Robotin" class="row">
+    <div class="col-lg-4 col-md-6">
+      <img
+        src="{% static 'Home/BetterRobotin2.png' %}"
+        height="560px"
+        width="650px"
+      />
+    </div>
+  </div>
+
+  <p class="mt-5">RANDOM CHARACTERS:</p>
+  <hr />
+  <div
+    class="row"
+    style="display: flex; justify-content: space-around; margin-bottom: 50px"
+  >
+    {% for character in characters %}
+
+    <div class="card" style="width: 18rem">
+      <a href="{% url 'characters:detail' character.id %}">
+        <img
+          src="{{ character.image.url }}"
+          style="height: 300px; object-fit: contain"
+          class="card-img-top"
+          alt="character"
+      /></a>
+
+      <div class="card-body">
+        <p class="card-text">
+          {{ character.universe }} / <strong>{{ character.name }}</strong>
+        </p>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

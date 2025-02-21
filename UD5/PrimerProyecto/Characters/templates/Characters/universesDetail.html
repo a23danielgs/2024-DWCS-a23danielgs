@@ -1,0 +1,15 @@
+{% extends "Home/base.html" %} {% load static %} {% block content %}
+
+<h1 id="UNIVERSES" class="font-weight-bold text-center">{{ universe }}</h1>
+
+{% for character in characters %} {% if character.universe == universe %}
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">
+    <a href="{% url 'characters:detail' character.id %}">
+      <h3>{{ character.universe }} / {{ character.name }}</h3>
+    </a>
+    <p class="text-muted">{{ character.date|date:'M d Y'|upper }}</p>
+  </li>
+  {% endif %} {% endfor %}
+</ul>
+{% endblock %}
