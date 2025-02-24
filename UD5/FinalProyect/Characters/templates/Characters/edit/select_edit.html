@@ -1,0 +1,38 @@
+{% extends "Characters/includes/base.html" %}
+{% load static %}
+{% block title %}
+    Edit Database
+{% endblock %}
+{% block style %}
+  <link href="{% static 'styles/edit.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div id="cuerpo">
+    <div id="home-banner">
+        <img width="200px" src="{% static 'img/Robotin.jpg' %}">
+        <div id="home-texto">
+            <h2 id="text"></h2>
+        </div>
+    </div>
+</div>
+<script defer>
+    const text = "Hi,  what  do  you  want  to  edit?  <form action='{% url 'characters:edit' %}'><input type='hidden' name='editUniverse' value='true'/><button>UNIVERSES</button></form>  or  <form action='{% url 'characters:edit' %}'><input type='hidden' name='editUniverse' value='false'/><button>CHARACTERS</button></form>";
+    let arr = text.split('  ')
+    let index = 0;
+
+    function typeWriterEdit() {
+        if (index < arr.length) {
+            document.getElementById('text').innerHTML += arr[index]+' ';
+            index++;
+            setTimeout(typeWriterEdit, 200);
+        }
+    }
+
+    typeWriterEdit();
+</script>
+{% endblock %}
+
+
+
+
+

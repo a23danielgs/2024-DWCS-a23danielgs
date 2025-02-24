@@ -1,0 +1,28 @@
+{% extends "Characters/includes/base.html" %}
+{% load static %}
+{% block title %}
+    Character Detail
+{% endblock %}
+{% block style %}
+
+{% endblock %}
+{% block content %}
+
+<div id="cuerpo">
+  <div id="CharacterDetail">
+    {% if character.alernateImage %}
+        <div id="images">
+            <img src="{{ character.image.url }}">
+            <img src="{{ character.alternateImage.url }}">
+        </div>
+    {% else %}
+        <img src="{{ character.image.url }}">
+    {% endif %}
+    <h2><strong>{{ character.name }}</strong></h2>
+    <div id="separator"></div>
+    <h2>{{ character.description }}</h2>
+    <div id="separator"></div>
+    <h2><a href="{% url 'characters:character_detail' character/slugify(character.universe) %}">{{ character.universe }}</a></h2>
+  </div>
+</div>
+{% endblock %}

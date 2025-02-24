@@ -1,0 +1,29 @@
+{% extends "Characters/includes/base.html" %}
+{% load static %}
+{% load slugify_filters %}
+{% block title %}
+    Character Detail
+{% endblock %}
+{% block style %}
+  <link href="{% static 'styles/detail.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+
+<div id="cuerpo">
+  <div id="Detail">
+    {% if character.alernateImage %}
+        <div id="images">
+            <img height="300px" src="{{ character.image.url }}">
+            <img height="300px" src="{{ character.alternateImage.url }}">
+        </div>
+    {% else %}
+        <img height="500px" src="{{ character.image.url }}">
+    {% endif %}
+    <h3><strong>{{ character.name }}</strong></h3>
+    <div id="separator"></div>
+    <p>{{ character.description }}</p>
+    <div id="separator"></div>
+    <h3><a id="universeLink" href="{% url 'characters:universe_detail' character.universe|slugify %}">{{ character.universe }}</a></h3>
+  </div>
+</div>
+{% endblock %}

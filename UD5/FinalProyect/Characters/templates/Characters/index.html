@@ -9,7 +9,16 @@
 {% block content %}
 
 <div id="cuerpo">
-    <h1 style="margin-top: 1%;">ALL CHARACTERS</h1>
+    {% if from_character_list %}
+        <h1 style="margin-top: 1%;">ALL CHARACTERS</h1>
+    {% else %}
+        {% if from_universe_detail %}
+            <h1 style="margin-top: 1%;">Todos los personajes de {{ query }}:</h1>
+        {% else %}
+            <h2 style="margin-top: 1%;">RESULTADOS DE LA BÚSQUEDA: {{ query }}</h2>
+        {% endif %}
+    {% endif %}
+    
     <div id="separator"></div>
     <div id="all-characters">
         {% for character in Characters %}
@@ -17,7 +26,7 @@
 
             <div class="card-body">
                 <div class="card-image">
-                <a href="">
+                <a href="{% url 'characters:character_detail' character.slug %}">
                     <img
                         src="{{ character.image.url }}"
                         style="height: 300px; object-fit: contain"

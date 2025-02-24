@@ -20,12 +20,25 @@
             <a class="navbar-brand" href="{% url 'characters:home' %}"><img src="{% static 'img/logo.png' %}" width="50px"> Character database</a>
             <a class="navbar-brand" href="{% url 'characters:universes' %}">Universes</a>
             <a class="navbar-brand" href="{% url 'characters:character_list' %}">Characters</a>
+            <a class="navbar-brand" href="{% url 'characters:select_edit' %}">Edit Database</a>
           </div>
-          <form class="d-flex input-group w-auto">
-            
-            <input type="search" class="form-control" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-light" type="submit">🔍</button>
-          </form>
+          <form
+          class="d-flex"
+          action="{% url 'characters:search' %}"
+          role="search"
+        >
+          <input
+            class="form-control me-2"
+            type="text"
+            name="q"
+            placeholder="Search"
+            aria-label="Search"
+            value="{{ query }}"
+          />
+          <button class="btn btn-outline-light" type="submit">
+          Search
+          </button>
+        </form>
         </div>
       </nav>
     </header>

@@ -1,0 +1,17 @@
+{% extends "Characters/includes/base.html" %}
+{% load static %}
+{% block title %}
+    All Universes
+{% endblock %}
+{% block content %}
+<div id="cuerpo">
+    <div id="universe_title"><img src="{% static 'img/logo.png' %}" width="90px" height="50px"> &emsp;<h1>Universes</h1></div>    
+    <div id="separator"></div>
+    <div id="listado-universos">
+        {% for universe in Universes %}
+        <div id="link_universo"><img src="{% static 'img/star.webp' %}" width="20px"><a href="{% url 'characters:home' %}">{{ universe.name }}</a></div>
+        <div id="separator2"></div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

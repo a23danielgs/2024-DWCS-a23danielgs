@@ -9,7 +9,7 @@
     <div id="separator"></div>
     <div id="listado-universos">
         {% for universe in Universes %}
-        <div id="link_universo"><img src="{% static 'img/star.webp' %}" width="20px"><a href="{% url 'characters:home' %}">{{ universe.name }}</a></div>
+        <div id="link_universo"><img src="{% static 'img/star.webp' %}" width="20px"><a href="{% url 'characters:universe_detail' universe.slug %}">{{ universe.name }}</a></div>
         <div id="separator2"></div>
         {% endfor %}
     </div>

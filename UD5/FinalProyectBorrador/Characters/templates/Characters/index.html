@@ -1,0 +1,36 @@
+{% extends "Characters/includes/base.html" %}
+{% load static %}
+{% block title %}
+    All Characters
+{% endblock %}
+{% block style %}
+<link href="{% static 'styles/index.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+
+<div id="cuerpo">
+    <h1 style="margin-top: 1%;">ALL CHARACTERS</h1>
+    <div id="separator"></div>
+    <div id="all-characters">
+        {% for character in Characters %}
+        <div class="card" style="width: 25rem">
+
+            <div class="card-body">
+                <div class="card-image">
+                <a href="">
+                    <img
+                        src="{{ character.image.url }}"
+                        style="height: 300px; object-fit: contain"
+                        class="card-img-top"
+                        alt="character"
+                    /></a>
+                </div>
+            <p class="card-text">
+                {{ character.universe }} / <strong>{{ character.name }}</strong>
+            </p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

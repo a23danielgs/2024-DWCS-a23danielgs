@@ -16,7 +16,7 @@
     <div id="random-characters">
         {% for character in Characters %}
             <div class="card" style="width: 18rem">
-                <a href="">
+                <a href="{% url 'characters:character_detail' character.slug %}">
                 <img
                     src="{{ character.image.url }}"
                     style="height: 300px; object-fit: contain"
@@ -33,7 +33,7 @@
         {% endfor %}
     </div>
 </div>
-<script>
+<script defer>
     const text = "Welcome to the database! I am Manolete, your digital guide in this vast galaxy of pop culture characters. Here, you can explore heroes, villains, magical creatures, and legends from your favorite franchises.";
     let arr = text.split(' ')
     let index = 0;

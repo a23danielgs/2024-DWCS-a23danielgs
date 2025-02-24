@@ -3,5 +3,11 @@ from .models import Character,Universe
 
 # Register your models here.
 
-admin.site.register(Character)
-admin.site.register(Universe)
+class CharacterAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug":("name",)}
+
+class UniverseAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug":("name",)}
+
+admin.site.register(Character,CharacterAdmin)
+admin.site.register(Universe,UniverseAdmin)
