@@ -22,17 +22,24 @@ class CharacterForm(forms.ModelForm):
             "alternateImage":"Alternate image",
             "universe":"Universe of the character"
         }
+        widgets = {
+            'description': forms.Textarea(attrs={'cols': 80, 'rows': 10})
+        }
 
 
 class UniverseForm(forms.ModelForm):
     class Meta:
         model = Universe
-        fields = "__all__"
+        exclude = ["slug"]
         labels = {
             "name": "Name of the universe",
             "description": "Description",
             "image":"Image",
             "date_of_creation":"Date of creation",
             "creator":"Creator of the universe"
+        }
+        widgets = {
+            "date_of_creation": forms.DateInput(attrs={"type": "date"}),
+            'description': forms.Textarea(attrs={'cols': 80, 'rows': 10})
         }
 

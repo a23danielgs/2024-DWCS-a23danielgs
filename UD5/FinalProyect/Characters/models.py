@@ -25,3 +25,4 @@ class Character(models.Model):
 
 
 
+

@@ -4,6 +4,7 @@
     Edit Character
 {% endblock %}
 {% block style %}
+<link href="{% static 'styles/edit.css' %}" rel="stylesheet">
 {% endblock %}
 {% block content %}
 <div id="cuerpo">
@@ -15,10 +16,9 @@
     </div>
 </div>
 {% if editingUniverse == True %}
-    <p>{{ editingUniverse }}</p>
     <script>
 
-        const text = "What do you want to do? <form action='{% url 'characters:add' %}'><input type='hidden' name='modelo' value='Universe'/><input type='hidden' name='modeloFormulario' value='UniverseForm'/><button>ADD UNIVERSE</button></form> <form action='{% url 'characters:update' %}'><input type='hidden' name='modelo' value='Universe'/><button>UPDATE UNIVERSE</button></form> <form action='{% url 'characters:delete' %}'><input type='hidden' name='modelo' value='Universe'/><button>DELETE UNIVERSE</button></form>";
+        const text = "What  do  you  want  to  do?  <form action='{% url 'characters:add' %}'><input type='hidden' name='modelo' value='Universe'/><input type='hidden' name='modeloFormulario' value='UniverseForm'/><button>ADD UNIVERSE</button></form>  <form action='{% url 'characters:update' %}'><input type='hidden' name='modelo' value='Universe'/><button>UPDATE UNIVERSE</button></form>  <form action='{% url 'characters:delete' %}'><input type='hidden' name='modelo' value='Universe'/><button>DELETE UNIVERSE</button></form>";
         let arr = text.split('  ')
         let index = 0;
 
@@ -35,7 +35,7 @@
 {% else %}
     <script>
 
-        const text2 = "What do you want to do? ";
+        const text2 = "What  do  you  want  to  do?  <form action='{% url 'characters:add' %}'><input type='hidden' name='modelo' value='Character'/><input type='hidden' name='modeloFormulario' value='CharacterForm'/><button>ADD CHARACTER</button></form>  <form action='{% url 'characters:update' %}'><input type='hidden' name='modelo' value='Character'/><button>UPDATE CHARACTER</button></form>  <form action='{% url 'characters:delete' %}'><input type='hidden' name='modelo' value='Character'/><button>DELETE CHARACTER</button></form>";
         let arr2 = text2.split('  ')
         let index2 = 0;
 
@@ -52,6 +52,5 @@
 {% endif %}
 {% endblock %}
 
-<form action='{% url 'characters:add' %}'><input type='hidden' name='modelo' value='Universe'/><input type='hidden' name='modeloFormulario' value='UniverseForm'/><button>ADD UNIVERSE</button></form>
-<form action='{% url 'characters:update' %}'><input type='hidden' name='modelo' value='Universe'/><button>UPDATE UNIVERSE</button></form>
-<form action='{% url 'characters:delete' %}'><input type='hidden' name='modelo' value='Universe'/><button>DELETE UNIVERSE</button></form>
+
+
