@@ -1,0 +1,38 @@
+{% extends "Characters/includes/base.html" %}
+{% load static %}
+{% block title %}
+    Select one to update
+{% endblock %}
+{% block style %}
+<link href="{% static 'styles/index.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+
+<div id="cuerpo">
+    <h2 style="margin-top: 1%;">Cual quieres editar?</h2>
+
+    
+    <div id="separator"></div>
+    <div id="all-characters">
+        {% for object in Objects %}
+        <div class="card" style="width: 25rem">
+            <p>{{ object.slug }}</p>
+            <div class="card-body">
+                <div class="card-image">
+                <a href="{% url 'characters:SelectedUpdate' object.slug %}">
+                    <img
+                        src="{{ object.image.url }}"
+                        style="height: 300px; object-fit: contain"
+                        class="card-img-top"
+                        alt="character"
+                    /></a>
+                </div>
+            <p class="card-text">
+                {{ object.name }}
+            </p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

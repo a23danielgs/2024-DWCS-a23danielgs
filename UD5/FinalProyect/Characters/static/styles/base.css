@@ -91,7 +91,7 @@ body {
   margin-left: 30%;
 }
 #link_universo {
-  width: 50%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

@@ -1,0 +1,28 @@
+{% extends "Characters/includes/base.html" %}
+{% load static %}
+{% block title %}
+    Update
+{% endblock %}
+{% block style %}
+<link href="{% static 'styles/edit.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div id="cuerpo">
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="campo">
+          <div class="form-control {% if field.errors %}errors{% endif %}">
+            {{ field.label_tag }}
+            {{ field }}
+            {{ field.errors }}
+          </div>
+        </div>
+        {% endfor %}
+        <button id="send" type="submit">Send</button>
+      </form>
+</div>
+{% endblock %}
+
+
+

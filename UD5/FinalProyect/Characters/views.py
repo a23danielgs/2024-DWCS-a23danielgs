@@ -6,6 +6,10 @@ from django.views import View
 from django.views.generic.edit import CreateView,UpdateView,DeleteView 
 import random
 from django.apps import apps
+from django.http import HttpResponseRedirect
+from django.forms.models import modelform_factory
+from django.shortcuts import get_object_or_404
+from django.urls import reverse_lazy
 
 # Create your views here.
 
@@ -64,13 +68,20 @@ def Edit(request):
 
 # ADD
 
+def get_model_by_name(model_name):
+    models = {
+        'Character': Character,
+        'Universe':Universe
+    }
+    model = models.get(model_name)
+    if model is None:
+        raise ValueError(f"Modelo '{model_name}' no encontrado.")
+    return model
 
-def get_model_by_name(name):
-    return apps.get_model(app_label='tu_app', model_name=name)
 
 class Add (CreateView):
     template_name = "Characters/edit/add.html"
-    success_url = "./Characters/index.html"
+    success_url = "/edit"
 
     def get_queryset(self):
         model_name = self.request.GET.get('modelo', 'Character')
@@ -83,17 +94,78 @@ class Add (CreateView):
 
 
 # ADD
+# UPDATE
+class SelectUpdate(ListView):
+    template_name = "Characters/edit/select_update.html"
+    context_object_name = "Objects"
+    
+    def get_queryset(self):
+        model_name = self.request.GET.get('modelo', 'Character')
+        model = get_model_by_name(model_name)
+        return model.objects.all()
 
-class Update (UpdateView):
-    template_name = "students/student_update.html"
-    model = Universe
-    fields = [ 
-        "name", 
-        "degree"
-    ] 
-    success_url ="/students"
+    def get_form_class(self):
+        form_class_name = self.request.GET.get('modeloFormulario', 'CharacterForm')
+        return globals().get(form_class_name) 
 
-class Delete (DeleteView):
-    model = Universe
-    success_url ="/students" 
-    template_name = "students/student_delete.html"
+
+def get_model_by_slug(slug):
+    if Character.objects.filter(slug=slug).exists():
+        return Character
+    elif Universe.objects.filter(slug=slug).exists():
+        return Universe
+
+    else:
+        raise ValueError(f"No se encontró ningún modelo para el slug '{slug}'")
+
+class Update(UpdateView):
+    template_name = "Characters/edit/update.html"
+    success_url = "/edit"
+
+    def get_model(self):
+        slug = self.kwargs.get('slug')
+        return get_model_by_slug(slug)
+
+    def get_object(self, queryset=None):
+        model = self.get_model()
+        slug = self.kwargs.get('slug')
+        return get_object_or_404(model, slug=slug)
+
+    def get_form_class(self):
+        model = self.get_model()
+        return modelform_factory(model, exclude=["slug"])
+# UPDATE
+# DELETE
+
+class SelectDelete(ListView):
+    template_name = "Characters/edit/select_delete.html"
+    context_object_name = "Objects"
+    
+    def get_queryset(self):
+        model_name = self.request.GET.get('modelo', 'Character')
+        model = get_model_by_name(model_name)
+        return model.objects.all()
+
+    def get_form_class(self):
+        form_class_name = self.request.GET.get('modeloFormulario', 'CharacterForm')
+        return globals().get(form_class_name) 
+    
+class Delete(DeleteView):
+    template_name = 'Characters/edit/delete.html'
+    success_url = reverse_lazy('characters:select_edit')
+    context_object_name = "Object"
+    
+    def get_model(self):
+        slug = self.kwargs.get('slug')
+        return get_model_by_slug(slug)
+
+    def get_object(self, queryset=None):
+        model = self.get_model()
+        slug = self.kwargs.get('slug')
+        return get_object_or_404(model, slug=slug)
+
+    def get_form_class(self):
+        model = self.get_model()
+        return modelform_factory(model, exclude=["slug"])
+    
+# DELETE

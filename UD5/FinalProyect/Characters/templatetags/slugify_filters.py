@@ -1,9 +1,9 @@
 from django import template
-from django.utils.text import slugify  # Importamos slugify para convertir el texto
+from django.utils.text import slugify  
 
 # Registrar los filtros personalizados
 register = template.Library()
 
-@register.filter(name='slugify')  # Decorador para registrar el filtro
+@register.filter(name='slugify') 
 def slugify_filter(value):
     return slugify(value)

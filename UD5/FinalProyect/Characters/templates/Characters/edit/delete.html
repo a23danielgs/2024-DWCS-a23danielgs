@@ -1,0 +1,20 @@
+{% extends "Characters/includes/base.html" %}
+{% load static %}
+{% block title %}
+    Delete
+{% endblock %}
+{% block style %}
+<link href="{% static 'styles/edit.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div id="cuerpo">
+    <h2>¿Seguro que quieres eliminar a {{ Object }}?</h2>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit">Eliminar</button>
+    </form>
+</div>
+{% endblock %}
+
+
+

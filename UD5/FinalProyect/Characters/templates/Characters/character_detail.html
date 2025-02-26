@@ -11,10 +11,10 @@
 
 <div id="cuerpo">
   <div id="Detail">
-    {% if character.alernateImage %}
+    {% if character.alternateImage %}
         <div id="images">
-            <img height="300px" src="{{ character.image.url }}">
-            <img height="300px" src="{{ character.alternateImage.url }}">
+            <img height="500px" src="{{ character.image.url }}">
+            <img height="400px" src="{{ character.alternateImage.url }}">
         </div>
     {% else %}
         <img height="500px" src="{{ character.image.url }}">

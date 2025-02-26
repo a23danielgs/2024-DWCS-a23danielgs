@@ -14,12 +14,12 @@ from .models import Universe,Character
 class CharacterForm(forms.ModelForm):
     class Meta:
         model = Character
-        fields = "__all__"
+        exclude = ["slug"]
         labels = {
             "name": "Name of the character",
             "description": "Description",
             "image": "Image",
-            "alternateImage":"Alternate image",
+            "alternateImage":"Alternate image (Optional)",
             "universe":"Universe of the character"
         }
         widgets = {
