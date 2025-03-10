@@ -1,0 +1,41 @@
+{% extends "Characters/includes/base.html" %}
+{% load static %}
+{% load slugify_filters %}
+{% block title %}
+    Universe Detail
+{% endblock %}
+{% block style %}
+  <link href="{% static 'styles/detail.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+
+<div id="cuerpo">
+  <div id="Detail">
+    <img width="500px" src="{{ universe.image.url }}">
+    <h3><strong>{{ universe.name }}</strong></h3>
+    <div id="separator"></div>
+    <p>{{ universe.description }}</p>
+    <div id="separator"></div>
+    <p>Date of creation : {{ universe.date_of_creation }}</p>
+    <div id="separator"></div>
+    <p>Autor : {{ universe.creator }}</p>
+    <div id="separator"></div>
+    <form action="{% url 'characters:search' %}">
+      <input
+            class="form-control me-2"
+            type="hidden"
+            name="q"
+            placeholder="Search"
+            aria-label="Search"
+            value="{{ universe.name }}"
+          />
+        <input
+          type="hidden"
+          name="from_universe_detail"
+          value="true"
+        />
+      <button>*See characters</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

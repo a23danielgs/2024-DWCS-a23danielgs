@@ -1,0 +1,24 @@
+>>> form App.models import Student
+
+*Get the students older than 20 years old.*
+>>> Student.objects.filter(age__gt=20)
+<QuerySet [<Student: Emily Carter>, <Student: James Rodriguez>, <Student: Sophia lee>]>
+
+*Get the students older than 25 and with a finished degree*
+>>> Student.objects.filter(age__gt=25,finished_degree=True)
+<QuerySet [<Student: James Rodriguez>]>
+
+*Get the average age of the students*
+>>> Student.objects.aggregate(Avg('age'))
+{'age__avg': 24.333333333333332}
+
+*Get the number of students with a degree*
+>>> Student.objects.filter(finished_degree=True).count()
+2
+
+*From a Degree object called degree get the name and surname of all the students that have finished
+that degree*
+>>> from App.models import Degree
+>>> degree=Degree.objects.all()[1]
+>>> Student.objects.filter(degree=degree,finished_degree=True)
+<QuerySet [<Student: James Rodriguez>]>

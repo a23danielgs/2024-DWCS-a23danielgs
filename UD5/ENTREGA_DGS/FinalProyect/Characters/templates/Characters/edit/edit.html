@@ -1,0 +1,56 @@
+{% extends "Characters/includes/base.html" %}
+{% load static %}
+{% block title %}
+    Edit Character
+{% endblock %}
+{% block style %}
+<link href="{% static 'styles/edit.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div id="cuerpo">
+    <div id="home-banner">
+        <img width="200px" src="{% static 'img/Robotin.jpg' %}">
+        <div id="home-texto">
+            <h2 id="text"></h2>
+        </div>
+    </div>
+</div>
+{% if editingUniverse == True %}
+    <script>
+
+        const text = "What  do  you  want  to  do?  <form action='{% url 'characters:add' %}'><input type='hidden' name='modelo' value='Universe'/><input type='hidden' name='modeloFormulario' value='UniverseForm'/><button>ADD UNIVERSE</button></form>  <form action='{% url 'characters:update' %}'><input type='hidden' name='modelo' value='Universe'/><button>UPDATE UNIVERSE</button></form>  <form action='{% url 'characters:delete' %}'><input type='hidden' name='modelo' value='Universe'/><button>DELETE UNIVERSE</button></form>";
+        let arr = text.split('  ')
+        let index = 0;
+
+        function typeWriterEdit() {
+            if (index < arr.length) {
+                document.getElementById('text').innerHTML += arr[index]+' ';
+                index++;
+                setTimeout(typeWriterEdit, 200);
+            }
+        }
+
+        typeWriterEdit();
+    </script>
+{% else %}
+    <script>
+
+        const text2 = "What  do  you  want  to  do?  <form action='{% url 'characters:add' %}'><input type='hidden' name='modelo' value='Character'/><input type='hidden' name='modeloFormulario' value='CharacterForm'/><button>ADD CHARACTER</button></form>  <form action='{% url 'characters:update' %}'><input type='hidden' name='modelo' value='Character'/><button>UPDATE CHARACTER</button></form>  <form action='{% url 'characters:delete' %}'><input type='hidden' name='modelo' value='Character'/><button>DELETE CHARACTER</button></form>";
+        let arr2 = text2.split('  ')
+        let index2 = 0;
+
+        function typeWriterEdit2() {
+            if (index2 < arr2.length) {
+                document.getElementById('text').innerHTML += arr2[index2]+' ';
+                index2++;
+                setTimeout(typeWriterEdit2, 200);
+            }
+        }
+
+        typeWriterEdit2();
+    </script>
+{% endif %}
+{% endblock %}
+
+
+

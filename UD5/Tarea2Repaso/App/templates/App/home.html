@@ -1,0 +1,10 @@
+{% load static %}
+
+<img src="{% static 'App/Chainsaw_Man_Logo.webp' %}" width="200px" />
+
+<h1>FAVORITE PRODUCTS:</h1>
+<ul>
+  {% for product in favorite_products %}
+  <li>{{ product.name }}</li>
+  {% endfor %}
+</ul>

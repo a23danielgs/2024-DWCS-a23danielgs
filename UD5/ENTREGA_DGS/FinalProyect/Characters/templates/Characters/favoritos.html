@@ -1,0 +1,48 @@
+{% extends "Characters/includes/base.html" %}
+{% load static %}
+{% block title %}
+    Favorites characters
+{% endblock %}
+{% block style %}
+<link href="{% static 'styles/index.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+
+<div id="cuerpo">
+    <div id="todosPersonajesYFavoritos">
+        <h2 style="margin-top: 1%;">PERSONAJES FAVORITOS</h2>
+        <span> /// </span>
+        <a href="{% url 'characters:character_list' %}">
+            <button>View All</button>
+        </a>
+    </div>
+    
+    <div id="separator"></div>
+    <div id="all-characters">
+        <div class="container-fluid">
+            <div class="row g-4">
+                {% for favorito in favoritos %}
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card" style="width: 100%">
+                        <div class="card-body">
+                            <div class="card-image">
+                            <a href="{% url 'characters:character_detail' favorito.slug %}">
+                                <img
+                                    src="{{ favorito.image.url }}"
+                                    class="card-img-top"
+                                    alt="favorito"
+                                    style="height: 300px; object-fit: contain; width: 100%;" />
+                            </a>
+                            </div>
+                            <p class="card-text">
+                                {{ favorito.universe }} / <strong>{{ favorito.name }}</strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
